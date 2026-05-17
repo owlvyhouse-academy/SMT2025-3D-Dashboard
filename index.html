@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ท้าทายเด็ก GIFTED แบบทดสอบ จุฬาภรณ์ SMT2025 สไตล์ 3D</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: #e0e5ec; /* สีพื้นหลังโทนสว่างสไตล์ Soft 3D Neumorphism */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        /* กล่อง Dashboard สไตล์ 3D เสมือนแท่นวางโมเดลจำลอง */
+        .dashboard-container {
+            background: #e0e5ec;
+            border-radius: 40px;
+            padding: 45px;
+            box-shadow: 
+                20px 20px 60px #bec3c9, 
+                -20px -20px 60px #ffffff;
+            text-align: center;
+            max-width: 950px;
+            width: 100%;
+        }
+
+        /* ส่วนจัดแสดงรูปภาพแบนเนอร์ส่วนบน */
+        .top-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 35px;
+            align-items: center;
+        }
+
+        .top-gallery img {
+            max-width: 100%;
+            border-radius: 25px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .top-gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        .logo-img {
+            max-width: 280px !important;
+            background-color: white;
+            padding: 12px;
+            border-radius: 20px;
+        }
+
+        /* หัวข้อหลัก */
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 40px;
+            font-size: 2.4em;
+            font-weight: 700;
+            line-height: 1.4;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.06);
+        }
+
+        /* จัดวางปุ่มในแนวนอนแบบ Table-Cell เพื่อความเสถียร */
+        .button-row {
+            display: table;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 20px 0; /* ระยะห่างระหว่างปุ่มในแนวนอน */
+            margin-bottom: 50px;
+        }
+
+        .button-cell {
+            display: table-cell;
+            width: 33.33%;
+            vertical-align: middle;
+        }
+
+        /* สไตล์ปุ่ม 3D ของเล่นสีสันสดใส */
+        .btn-3d {
+            display: block;
+            padding: 22px 15px;
+            font-size: 1.15em;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            border-radius: 22px;
+            position: relative;
+            top: 0;
+            transition: all 0.1s ease;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            box-sizing: border-box;
+        }
+
+        /* ปุ่มที่ 1: สีชมพูอมแดง */
+        .btn-1 { 
+            background-color: #ff6b6b; 
+            box-shadow: 0 10px 0 #c0392b; 
+        }
+        .btn-1:hover { background-color: #ff7676; }
+        .btn-1:active { 
+            top: 10px; 
+            box-shadow: 0 0 0 #c0392b; 
+        }
+
+        /* ปุ่มที่ 2: สีฟ้าเขียว */
+        .btn-2 { 
+            background-color: #4ecdc4; 
+            box-shadow: 0 10px 0 #16a085; 
+        }
+        .btn-2:hover { background-color: #54d4cc; }
+        .btn-2:active { 
+            top: 10px; 
+            box-shadow: 0 0 0 #16a085; 
+        }
+
+        /* ปุ่มที่ 3: สีส้ม */
+        .btn-3 { 
+            background-color: #fca311; 
+            box-shadow: 0 10px 0 #cc7a00; 
+        }
+        .btn-3:hover { background-color: #fdb035; }
+        .btn-3:active { 
+            top: 10px; 
+            box-shadow: 0 0 0 #cc7a00; 
+        }
+
+        /* พื้นที่จัดแสดงรูปภาพส่วนล่าง (owlvy_family) */
+        .bottom-gallery {
+            margin-top: 20px;
+            padding-top: 30px;
+            border-top: 3px dashed #bec3c9; /* เส้นประคั่นส่วนท้ายเพิ่มความน่ารัก */
+            display: block;
+        }
+
+        .bottom-gallery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .bottom-gallery img:hover {
+            transform: scale(1.02);
+        }
+
+        /* ปรับแต่งสำหรับการแสดงผลบนมือถือ (หน้าจอขนาดเล็ก) */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.7em; }
+            
+            /* เปลี่ยนจากแนวนอนเป็นแนวตั้งเพื่อไม่ให้ปุ่มบีบกันเกินไป */
+            .button-row {
+                display: block;
+            }
+            .button-cell {
+                display: block;
+                width: 100%;
+                margin-bottom: 25px; /* ระยะห่างระหว่างปุ่มในแนวตั้ง */
+            }
+            .btn-3d {
+                padding: 18px 20px;
+                font-size: 1.1em;
+            }
+            .dashboard-container { padding: 25px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <div class="top-gallery">
+            <img src="smt2025-banner.png" alt="โลโก้ SMT2025 จุฬาภรณ์" class="logo-img">
+            <img src="owlvy_banner.jpg" alt="Owlvy แบนเนอร์ ท้าทายเด็ก Gifted">
+        </div>
+
+        <h1>ท้าทายเด็ก GIFTED<br>แบบทดสอบ จุฬาภรณ์ SMT2025 สไตล์ 3D</h1>
+
+        <div class="button-row">
+            <div class="button-cell">
+                <a href="smt2025-pretest2568-01-20questions.html" class="btn-3d btn-1">
+                    📝 แบบทดสอบ ข้อ 1 - 20
+                </a>
+            </div>
+            
+            <div class="button-cell">
+                <a href="smt2025-pretest2568-21-40questions.html" class="btn-3d btn-2">
+                    📝 แบบทดสอบ ข้อ 21 - 40
+                </a>
+            </div>
+            
+            <div class="button-cell">
+                <a href="smt2025-pretest2568-41-60questions.html" class="btn-3d btn-3">
+                    📝 แบบทดสอบ ข้อ 41 - 60
+                </a>
+            </div>
+        </div>
+
+        <div class="bottom-gallery">
+            <img src="owlvy_family.png" alt="Owlvy Family แบนเนอร์ส่วนท้าย">
+        </div>
+
+    </div>
+
+</body>
+</html>
